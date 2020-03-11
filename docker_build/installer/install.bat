@@ -15,7 +15,7 @@ echo. && echo.
 SET /P AREYOUSURE=Are you sure you wish yo continue? (Y/[N])?
 IF /I "%AREYOUSURE%" NEQ "Y" GOTO END
 
-CD %~dp0%..\..\programs\make
+CD /d %~dp0%..\..\programs\make
 set INSTALL_PATH=%cd%
 echo.
 echo setting windows path variable

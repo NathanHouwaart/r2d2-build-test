@@ -41,16 +41,19 @@ ifeq ($(OS),Windows_NT)
 	BOOTMODE	:= $(BOSSAC) -a --port=$(SERIAL_PORT)
 	SUDO   		:=
 	TERMINAL 	:= $(R2D2_ROOT_DRIVE)$(R2D2_ROOT_DIR)/programs/terminal/terminal_windows.exe
+	POST_UPLOAD := $(SUDO) $(BOSSAC) --port=$(SERIAL_PORT) -R
 else
 	UNAME_S := $(shell uname -s)
 	ifeq ($(UNAME_S),Darwin)
 		BOSSAC 		:= $(R2D2_ROOT_DRIVE)$(R2D2_ROOT_DIR)/programs/bossac/bossac_mac.exe
 		BOOTMODE	:= $(BOSSAC) -a --port=$(SERIAL_PORT)
 		TERMINAL 	:= $(R2D2_ROOT_DRIVE)$(R2D2_ROOT_DIR)/programs/terminal/terminal_mac.exe
+		POST_UPLOAD := 
 	else
 		BOSSAC 		:= $(R2D2_ROOT_DRIVE)$(R2D2_ROOT_DIR)/programs/bossac/bossac_linux.exe
 		BOOTMODE   	:= stty -F $(SERIAL_PORT) speed 1200 cs8 -cstopb -parenb; sleep 1.0
 		TERMINAL 	:= $(R2D2_ROOT_DRIVE)$(R2D2_ROOT_DIR)/programs/terminal/terminal_linux.exe
+		POST_UPLOAD := 
 	endif
 
 	SUDO	:= sudo
@@ -70,7 +73,7 @@ build:
 upload:
 	$(SUDO) $(BOOTMODE)
 	$(SUDO) $(BOSSAC) --port=$(SERIAL_PORT) -Ufalse -e -w -v -b main.bin
-#	$(SUDO) $(BOSSAC) --port=$(SERIAL_PORT) -R
+	$(POST_UPLOAD)
 
 terminal:
 	$(SUDO) $(TERMINAL) -termonly $(SERIAL_PORT) $(CONSOLE_BAUDRATE) 84000
