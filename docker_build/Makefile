@@ -27,7 +27,7 @@
 ## -- werken aan docker makefile 10:00 - 11:00
 ## -- werken aan docker makefile 13:20 - 16:22 ->  makefile voor windows werkt nu!!!!
 ## -- werken aan docker makefile voor linux 17:00 - 17: 35
-## -- werken aan docker makefile voor linux 18:30 - nu
+## -- werken aan docker makefile voor linux en croos platform werkend krijgen 18:30 - 00:10
 
 
 ## DOCKER IMAGE SETTINGS
