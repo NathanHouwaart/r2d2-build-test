@@ -1,6 +1,7 @@
 
 MODULE_NAME			= test_module
-SERIAL_PORT 		= /dev/ttyACM0
+SERIAL_PORT 		= COM4
+#/dev/ttyACM0
 CONSOLE_BAUDRATE	= 115200
 
 export 
