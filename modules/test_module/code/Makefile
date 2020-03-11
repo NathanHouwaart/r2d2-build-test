@@ -1,6 +1,7 @@
 
 MODULE_NAME			= test_module
-SERIAL_PORT 		= COM4
+SERIAL_PORT 		= /dev/tty.usbmodem146201
+#COM4
 #/dev/ttyACM0
 CONSOLE_BAUDRATE	= 115200
 

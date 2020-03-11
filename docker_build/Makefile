@@ -46,11 +46,11 @@ else
 	ifeq ($(UNAME_S),Darwin)
 		BOSSAC 		:= $(R2D2_ROOT_DRIVE)$(R2D2_ROOT_DIR)/programs/bossac/bossac_mac.exe
 		BOOTMODE	:= $(BOSSAC) -a --port=$(SERIAL_PORT)
-		TERMINAL 	:= $(R2D2_ROOT_DRIVE)$(R2D2_ROOT_DIR)/programs/bmptk/tools/terminal_mac.exe
+		TERMINAL 	:= $(R2D2_ROOT_DRIVE)$(R2D2_ROOT_DIR)/programs/terminal/terminal_mac.exe
 	else
 		BOSSAC 		:= $(R2D2_ROOT_DRIVE)$(R2D2_ROOT_DIR)/programs/bossac/bossac_linux.exe
 		BOOTMODE   	:= stty -F $(SERIAL_PORT) speed 1200 cs8 -cstopb -parenb; sleep 1.0
-		TERMINAL 	:= $(R2D2_ROOT_DRIVE)$(R2D2_ROOT_DIR)/programs/bmptk/tools/terminal_linux.exe
+		TERMINAL 	:= $(R2D2_ROOT_DRIVE)$(R2D2_ROOT_DIR)/programs/terminal/terminal_linux.exe
 	endif
 
 	SUDO	:= sudo
@@ -69,8 +69,8 @@ build:
 
 upload:
 	$(SUDO) $(BOOTMODE)
-	$(SUDO) $(BOSSAC) --port=ttyACM0 -Ufalse -e -w -v -b main.bin -R
-#$(SUDO) $(BOSSAC) --port=$(SERIAL_PORT) -R
+	$(SUDO) $(BOSSAC) --port=$(SERIAL_PORT) -Ufalse -e -w -v -b main.bin
+#	$(SUDO) $(BOSSAC) --port=$(SERIAL_PORT) -R
 
 terminal:
 	$(SUDO) $(TERMINAL) -termonly $(SERIAL_PORT) $(CONSOLE_BAUDRATE) 84000
