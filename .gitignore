@@ -1,11 +1,11 @@
-/programs
-/modules
+programs/bmptk/*
 settings.json
 
 # un ignore certain items in the modules directory and programs directory
 !/modules/template-arduino
 !/modules/template-native
 !/modules/template-pi
+!/modules/test_module/*
 !/modules/.vscode
 !/modules/.clang-format
 !/programs/bmptk

@@ -1,0 +1,5 @@
+MODULE_MAKEFILE_PATH 	:= $(abspath $(lastword $(MAKEFILE_LIST)))
+MODULE_MAKEFILE_DIR		:= $(notdir $(patsubst %/,%,$(dir $(MODULE_MAKEFILE_PATH))))
+
+export 
+include $(R2D2_ROOT_DIR)/docker_build/Makefile
