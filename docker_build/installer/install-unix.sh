@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 R2D2_ROOT_DIR=$(pwd)/../..
 R2D2_ROOT_DIR=$(cd $R2D2_ROOT_DIR && pwd)
 
