@@ -1,0 +1,15 @@
+R2D2_MAKEFILE_PATH 		:= $(patsubst %modules&,%,$(lastword $(MAKEFILE_LIST)))
+R2D2_MAKEFILE_DIR		:= $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
+
+
+R2D2_ROOT_FOLDER 		= $(lastword $(MAKEFILE_LIST))
+current_dir 			= $(patsubst %/,%,$(dir $(mkfile_path)))
+#R2D2_ROOT_FOLDER 		= $(patsubst %/library/,%,$(patsubst %/modules/,%,$(dir $(mkfile_path))))
+MODULE_OR_LIB			=
+
+r2d2_test:
+	@echo $(R2D2_MAKEFILE_PATH)
+	@echo $(R2D2_MAKEFILE_DIR)
+
+export
+# include $(R2D2_ROOT_FOLDER)/docker_build/Makefile
