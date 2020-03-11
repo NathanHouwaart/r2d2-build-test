@@ -1,6 +1,6 @@
 
 MODULE_NAME		= test_module
-SERIAL_PORT 		= COM2
+SERIAL_PORT 		= /dev/ttyACM0
 #/dev/tty.usbmodem146201
 #COM4
 #/dev/ttyACM0

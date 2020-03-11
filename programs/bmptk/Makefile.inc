@@ -1420,6 +1420,7 @@ PORT_CHECK :=
 # Run (= download and start) the project
 run: $(PROJECT)
 	$(PORT_CHECK)
+	@echo runpre = $(RUN_PRE)
 	$(RUN_PRE)   
 	$(RUN)
 	$(RUN_TERMINAL)
