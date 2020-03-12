@@ -28,6 +28,8 @@ For manual installation, first pull the repository with the following command (t
     1. Run the install.bat folder in **administrator mode**
     2. Log out and log back in to apply the changes
 
+4. The R2D2 build environment is now properly setup. Continue to **First run** bewlow.
+
 ## First run: 
 After you have installed the r2d2-test-build environment, you can continue with these steps.
 
