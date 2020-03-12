@@ -11,14 +11,14 @@ To install the R2D2 test build environment, you need to meet the following prere
 ## How to install?
 There are two options to install the R2D2 test build environment.
 You can either make use of:
-*   The install script provided at this [repo](link)
+*   The install script provided at this [repo](link) NOT YET IMPLEMENTED
 *   Manual installation
 
 
 ## Manual installation:
 For manual installation, first pull the repository with the following command (this may take some time):
 1. `git clone --recursive https://github.com/nathanhouwaart/r2d2-build-test.git`
-2. cd to the docker_build/installer directory: `cd r2d2-build-test/docker_build/installer directory`
+2. cd to the docker_build/installer directory: `cd r2d2-build-test/docker_build/installer`
 3. 
 - **If you are on Mac or Linux:**
     1. Make the install-xxx.sh script executable by using the following command: `sudo chmod +x install-xxx.sh`
