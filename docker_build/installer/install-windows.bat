@@ -79,6 +79,9 @@ echo setting windows path variable for make to: %MAKE_INSTALL_PATH%
 endlocal
 
 echo done
+echo log out and back in to apply the changes!
+echo.
+echo.
 
 :: Pause the screen and wait for user to press a key, that way rhe user can read through the script output
 pause
