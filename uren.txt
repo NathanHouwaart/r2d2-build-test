@@ -1,0 +1,5 @@
+
+datum 12-03-20 
+
+19:55 - 20:15   -- verbeterd linux install script en mac install script
+20:15 - 21:14   -- Readme.md geschreven

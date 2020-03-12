@@ -11,24 +11,6 @@
 # 
 #############################################################################
 
-## ---- uren op 09-03-20 ---- ##
-# vergadering 13:00 - 14:24
-# uren gewerkt aan makefile 14:30 - 16:00
-# uren gewerkt aan dit: 20.15 - 00:40
-
-
-## ---- uren op 10-03-20 ---- ##
-# werken aan docker en windows 10 pro licence van 11:45 - 12:30
-# vergadering van team 1 -> build environment van vorig jaar getest  12:30 -> 14:00
-# weken aan docker makefile voor leads -> kijken of build environment van vorig jaar nog werkt in de docker container 14:00 -> 17:00
-# weken aan docker makefile voor leads -> kijken of build environment van vorig jaar nog werkt in de docker container 21:20 -> 22:50
-
-## ---- uren op 11-03-20 ---- ##
-## -- werken aan docker makefile 10:00 - 11:00
-## -- werken aan docker makefile 13:20 - 16:22 ->  makefile voor windows werkt nu!!!!
-## -- werken aan docker makefile voor linux 17:00 - 17: 35
-## -- werken aan docker makefile voor linux en croos platform werkend krijgen 18:30 - 00:10
-
 
 ## DOCKER IMAGE SETTINGS
 DOCKER_IMAGENAME 		:= nathanhouwaart/r2d2_buildenvironment
