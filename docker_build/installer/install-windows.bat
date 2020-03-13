@@ -60,7 +60,7 @@ CD /d %~dp0%..\..
 set R2D2_ROOT_FOLDER=!%cd%
 set R2D2_ROOT_FOLDER=!%R2D2_ROOT_FOLDER%
 set R2D2_ROOT_FOLDER=%R2D2_ROOT_FOLDER:\=/%
-setx /M R2D2_ROOT_DIR %R2D2_ROOT_FOLDER% 
+setx /M R2D2_ROOT_DIR "%R2D2_ROOT_FOLDER%"
 echo setting R2D2-Root folder to: !%R2D2_ROOT_FOLDER% 
 
 echo.
