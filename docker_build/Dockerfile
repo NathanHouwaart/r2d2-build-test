@@ -5,9 +5,9 @@ RUN apt-get -qq update \
 
 RUN wget https://developer.arm.com/-/media/Files/downloads/gnu-rm/9-2019q4/gcc-arm-none-eabi-9-2019-q4-major-x86_64-linux.tar.bz2 \
     && tar xvf gcc-arm-none-eabi-9-2019-q4-major-x86_64-linux.tar.bz2 --directory usr/local/bin \
-    && rm gcc-arm-none-eabi-9-2019-q4-major-x86_64-linux.tar.bz2
+    && rm gcc-arm-none-eabi-9-2019-q4-major-x86_64-linux.tar.bz2 && mv -v /usr/local/bin/gcc-arm-none-eabi-9-2019-q4-major/bin/* /usr/local/bin
 
-ENV PATH=$PATH:/usr/local/bin/gcc-arm-none-eabi-9-2019-q4-major/bin
+#ENV PATH=$PATH:/usr/local/bin/gcc-arm-none-eabi-9-2019-q4-major/bin
 
 WORKDIR /usr/project
 

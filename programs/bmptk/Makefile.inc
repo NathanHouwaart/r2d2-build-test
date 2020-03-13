@@ -447,7 +447,7 @@ endif
 # running native on Windows     
 define Windows      
    CHIP              := Windows_Native
-   PREFIX            := $(GCC-WIN)/bin/
+   PREFIX            := $(GCC-WIN)
    TARGET_CPP_FLAGS  += -mno-ms-bitfields   
    TARGET_C_FLAGS    += -mno-ms-bitfields   
    LIBS              += ../../../libraries/libusb/MinGW32/static/libusb-1.0.a
@@ -654,10 +654,10 @@ define Cortex
    
    ifeq ($(GCC-ARM),)
       # use shell to find the tools   
-      PREFIX := $(ARM-EABI)-
+      PREFIX := $(GCC-ARM)gcc-arm-none-eabi-9-2019-q4-major/bin/$(ARM-EABI)-
    else
       # use absolute paths to find the tools
-      PREFIX := $(GCC-ARM)/bin/$(ARM-EABI)-
+      PREFIX := $(GCC-ARM)gcc-arm-none-eabi-9-2019-q4-major/bin/$(ARM-EABI)-
    endif
 
    SEARCH          += $(BMPTK)/targets/cortex $(BMPTK)/targets/cortex/cmsis
@@ -1007,14 +1007,14 @@ INCLUDES  += $(foreach x, $(SEARCH), -I$(x))
 # 
 #============================================================================
 
-CC          := "/usr/local/$(PREFIX)gcc"
-CPP       := "/usr/local/$(PREFIX)g++"
-AS          := "/usr/local/$(PREFIX)gcc"
-OBJCOPY     := "/usr/local/$(PREFIX)objcopy"
-OBJDUMP     := "/usr/local/$(PREFIX)objdump"
-SIZES       := "/usr/local/$(PREFIX)size"
-NM          := "/usr/local/$(PREFIX)nm"
-FILT        := "/usr/local/$(PREFIX)c++filt"
+CC          := "/usr/local/bin/$(PREFIX)gcc"
+CPP       := "/usr/local/bin/$(PREFIX)g++"
+AS          := "/usr/local/bin/$(PREFIX)gcc"
+OBJCOPY     := "/usr/local/bin/$(PREFIX)objcopy"
+OBJDUMP     := "/usr/local/bin/$(PREFIX)objdump"
+SIZES       := "/usr/local/bin/$(PREFIX)size"
+NM          := "/usr/local/bin/$(PREFIX)nm"
+FILT        := "/usr/local/bin/$(PREFIX)c++filt"
 
 ifeq ($(LANGUAGE),C)
    LINKER    := "$(PREFIX)gcc"

@@ -14,6 +14,8 @@ You can either make use of:
 *   The install script provided at this [repo](link) NOT YET IMPLEMENTED
 *   Manual installation
 
+**NOTE:** Due to a limitation in GNU make, you are not allowed to have spaces in your directories!!!!
+
 
 ## Manual installation:
 For manual installation, first pull the repository with the following command (this may take some time):
