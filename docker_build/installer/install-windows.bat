@@ -46,7 +46,7 @@ IF /I "%AREYOUSURE%" NEQ "Y" GOTO END
 ::  - Set a environment variable with setx called R2D2_ROOT_DRIVE with the root drive of R2D2
 echo. && echo.
 set R2D2_ROOT_DRIVE=%~d0%
-rem setx /M R2D2_ROOT_DRIVE %R2D2_ROOT_DRIVE%
+setx /M R2D2_ROOT_DRIVE %R2D2_ROOT_DRIVE%
 echo setting R2D2-Root drive to: %R2D2_ROOT_DRIVE%
 
 :: Echo two blank lines and let user know what's up
@@ -60,7 +60,7 @@ CD /d %~dp0%..\..
 set R2D2_ROOT_FOLDER=!%cd%
 set R2D2_ROOT_FOLDER=!%R2D2_ROOT_FOLDER%
 set R2D2_ROOT_FOLDER=%R2D2_ROOT_FOLDER:\=/%
-rem /M R2D2_ROOT_DIR %R2D2_ROOT_FOLDER% 
+setx /M R2D2_ROOT_DIR %R2D2_ROOT_FOLDER% 
 echo setting R2D2-Root folder to: !%R2D2_ROOT_FOLDER% 
 
 echo.
@@ -70,8 +70,8 @@ echo.
 ::  - Assign the variable MAKE_INSTALL_PATH to this folder. E.g. 'D:\User\r2d2-build-test\programs\make'
 ::  - cdAdd MAKE_INSTALL_PATH to the global PATH variable in order to call make from anywhere in the terminal
 CD %~dp0%..\..\programs\make
-set MAKE_INSTALL_PATH=!%cd%
-rem /M path "%path%;%MAKE_INSTALL_PATH%
+set MAKE_INSTALL_PATH=%cd%
+setx /M path "%path%;%MAKE_INSTALL_PATH%
 echo setting windows path variable for make to: %MAKE_INSTALL_PATH%
 
 

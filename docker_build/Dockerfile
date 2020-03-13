@@ -11,7 +11,7 @@ ENV PATH=$PATH:/usr/local/bin/gcc-arm-none-eabi-9-2019-q4-major/bin
 
 WORKDIR /usr/project
 
-CMD ["make"]
+CMD ["bash"]
 
 
 #sudo docker run -it -v $(PWD):/usr/src/myapp -w /usr/src/myapp --privileged --device=/dev/tty.usbmodem146201:/dev/tty.usbmodem146201 r2d2_build/gcc9-make:1.0 bash

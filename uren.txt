@@ -3,3 +3,6 @@ datum 12-03-20
 
 19:55 - 20:15   -- verbeterd linux install script en mac install script
 20:15 - 21:14   -- Readme.md geschreven
+22:30 - 23:00   -- windows.bat file bijwerken op basis van de feedback van Jochem van weelde
+23:00 - 23:13   -- install-linux en install-mac voorzien van doxygen
+23:15 -         -- werken aan uitleggen van docker structuur
