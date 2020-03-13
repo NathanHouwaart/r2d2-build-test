@@ -1,7 +1,7 @@
 #############################################################################
 #
-# Makefile for building hwlib in a docker container, uploading to arduino
-# and running a native terminal
+# Makefile for building R2D2 in a Docker container. This works for native 
+# as well as for the Arduino Due
 #
 # Copyright (c) R2D2 leads 2020 (r2d2-leads@hu.nl)
 # 
@@ -13,16 +13,24 @@
 
 
 ## DOCKER IMAGE SETTINGS
+# These settings decide what image and what version of that image 
+# from DockerHub will be used to setup a container
 DOCKER_IMAGENAME 		:= nathanhouwaart/r2d2_buildenvironment
 DOCKER_IMAGEVERSION		:= 1.0
 DOCKER_IMAGE 			:= $(DOCKER_IMAGE):$(DOCKER_IMAGEVERSION)
 
+
+# For both Native and Due, the Arduino make run routine differs.
+# On Native you do not need to upload or start the terminal.
 ifneq ($(strip $(PLATFORM)),native)
 	DEPENDENCIES = build upload terminal 
 else
 	DEPENDENCIES = build execute
 endif
 
+# Depending if you are on Windows, Mac or Linux, some variables will differ.
+# e.g. on  winndows we would want to use the bossac and terminal for windows 
+# whilst on mac we want to use the Mac variant
 ifeq ($(OS),Windows_NT)
 	BOSSAC		:= $(R2D2_ROOT_DRIVE)$(R2D2_ROOT_DIR)/programs/bossac/bossac_windows.exe
 	BOOTMODE	:= $(BOSSAC) -a --port=$(SERIAL_PORT)
@@ -31,6 +39,7 @@ ifeq ($(OS),Windows_NT)
 	BOSSAC_PORT := $(SERIAL_PORT)
 	POST_UPLOAD := $(SUDO) $(BOSSAC) --port=$(SERIAL_PORT) -R
 else
+	# If the os is not Windows, decide if the OS is Mac or Linux
 	UNAME_S := $(shell uname -s)
 	ifeq ($(UNAME_S),Darwin)
 		BOSSAC 		:= $(R2D2_ROOT_DRIVE)$(R2D2_ROOT_DIR)/programs/bossac/bossac_mac.exe
@@ -49,12 +58,14 @@ else
 	SUDO	:= sudo
 endif
 
+# This commant will get the map name the Makefile is called from
 TARGET_MAKEFILE_DIR 	:= $(abspath $(firstword $(MAKEFILE_LIST)))
 TARGET_MAKEFILE_DIR		:= $(notdir $(patsubst %/,%,$(dir $(TARGET_MAKEFILE_DIR))))
 	
 
 .phony: run clean clean_container terminal build upload terminal
 
+# the make run procedure is different for native and due
 run: $(DEPENDENCIES)
 
 build:
