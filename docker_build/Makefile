@@ -17,6 +17,11 @@ DOCKER_IMAGENAME 		:= nathanhouwaart/r2d2_buildenvironment
 DOCKER_IMAGEVERSION		:= 1.0
 DOCKER_IMAGE 			:= $(DOCKER_IMAGE):$(DOCKER_IMAGEVERSION)
 
+ifneq ($(strip $(PLATFORM)),native)
+	DEPENDENCIES = build upload terminal 
+else
+	DEPENDENCIES = build execute
+endif
 
 ifeq ($(OS),Windows_NT)
 	BOSSAC		:= $(R2D2_ROOT_DRIVE)$(R2D2_ROOT_DIR)/programs/bossac/bossac_windows.exe
@@ -50,10 +55,11 @@ TARGET_MAKEFILE_DIR		:= $(notdir $(patsubst %/,%,$(dir $(TARGET_MAKEFILE_DIR))))
 
 .phony: run clean clean_container terminal build upload terminal
 
-run: build upload terminal 
+run: $(DEPENDENCIES)
 
 build:
-	$(SUDO) docker run --rm -it -v $(R2D2_ROOT_DRIVE)$(R2D2_ROOT_DIR):/usr/src/myapp -w /usr/src/myapp/$(MODULE_MAKEFILE_DIR)/$(MODULE_NAME)/$(TARGET_MAKEFILE_DIR) nathanhouwaart/r2d2_buildenvironment:1.0 make --makefile=Makefile.docker build TARGET_DIRECTORY=$(TARGET_DIRECTORY) CONSOLE_BAUDRATE=$(CONSOLE_BAUDRATE) SERIAL_PORT=$(SERIAL_PORT)
+	@echo $(DEPENDENCIES)
+	$(SUDO) docker run --rm -it -v $(R2D2_ROOT_DRIVE)$(R2D2_ROOT_DIR):/usr/src/myapp -w /usr/src/myapp/$(MODULE_MAKEFILE_DIR)/$(MODULE_NAME)/$(TARGET_MAKEFILE_DIR) nathanhouwaart/r2d2_buildenvironment:1.0 make --makefile=Makefile.docker build TARGET_DIRECTORY=$(TARGET_DIRECTORY) CONSOLE_BAUDRATE=$(CONSOLE_BAUDRATE) SERIAL_PORT=$(SERIAL_PORT) PLATFORM=$(PLATFORM)
 
 upload:
 	$(SUDO) $(BOOTMODE)
@@ -63,8 +69,11 @@ upload:
 terminal:
 	$(SUDO) $(TERMINAL) -termonly $(SERIAL_PORT) $(CONSOLE_BAUDRATE) 84000
 
+execute:
+	$(SUDO) docker run --rm -it -v $(R2D2_ROOT_DRIVE)$(R2D2_ROOT_DIR):/usr/src/myapp -w /usr/src/myapp/$(MODULE_MAKEFILE_DIR)/$(MODULE_NAME)/$(TARGET_MAKEFILE_DIR) nathanhouwaart/r2d2_buildenvironment:1.0 ./main.exe
+
 clean:
-	$(SUDO) docker run --rm -it -v $(R2D2_ROOT_DRIVE)$(R2D2_ROOT_DIR):/usr/src/myapp -w /usr/src/myapp/$(MODULE_MAKEFILE_DIR)/$(MODULE_NAME)/$(TARGET_MAKEFILE_DIR) nathanhouwaart/r2d2_buildenvironment:1.0 make --makefile=Makefile.docker clean TARGET_DIRECTORY=$(TARGET_DIRECTORY) CONSOLE_BAUDRATE=$(CONSOLE_BAUDRATE) SERIAL_PORT=$(SERIAL_PORT)
+	$(SUDO) docker run --rm -it -v $(R2D2_ROOT_DRIVE)$(R2D2_ROOT_DIR):/usr/src/myapp -w /usr/src/myapp/$(MODULE_MAKEFILE_DIR)/$(MODULE_NAME)/$(TARGET_MAKEFILE_DIR) nathanhouwaart/r2d2_buildenvironment:1.0 make --makefile=Makefile.docker clean TARGET_DIRECTORY=$(TARGET_DIRECTORY) CONSOLE_BAUDRATE=$(CONSOLE_BAUDRATE) SERIAL_PORT=$(SERIAL_PORT) PLATFORM=$(PLATFORM)
 
 clean_container:
 	docker rm $(shell docker ps -a -q)

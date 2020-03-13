@@ -5,4 +5,8 @@ datum 12-03-20
 20:15 - 21:14   -- Readme.md geschreven
 22:30 - 23:00   -- windows.bat file bijwerken op basis van de feedback van Jochem van weelde
 23:00 - 23:13   -- install-linux en install-mac voorzien van doxygen
-23:15 -         -- werken aan uitleggen van docker structuur
+23:15 - 00:15   -- werken aan uitleggen van docker structuur
+
+
+datum 13-03-20 
+11:20 -     	-- werken aan uitleggen van docker structuur
