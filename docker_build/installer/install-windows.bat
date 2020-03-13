@@ -17,6 +17,7 @@ cls
 :: Without this, variales can not be variable assigned. More information can be found here: https://ss64.com/nt/delayedexpansion.html
 :: Variables with delayed expansion are indicated with '!'. Like -> !%R2D2_ROOT_FOLDER%
 setlocal enabledelayedexpansion
+setlocal enableextensions
 
 :: Basic echo information to let the user know what this script does.
 echo 		    --- R2D2-install script ---
@@ -44,10 +45,8 @@ IF /I "%AREYOUSURE%" NEQ "Y" GOTO END
 ::  - Ignore the backslash '\'character
 ::  - Set a environment variable with setx called R2D2_ROOT_DRIVE with the root drive of R2D2
 echo. && echo.
-CD /
-set R2D2_ROOT_DRIVE=%cd%
-set R2D2_ROOT_DRIVE=%R2D2_ROOT_DRIVE:\=%
-setx /M R2D2_ROOT_DRIVE %R2D2_ROOT_DRIVE%
+set R2D2_ROOT_DRIVE=%~d0%
+rem setx /M R2D2_ROOT_DRIVE %R2D2_ROOT_DRIVE%
 echo setting R2D2-Root drive to: %R2D2_ROOT_DRIVE%
 
 :: Echo two blank lines and let user know what's up
@@ -56,29 +55,30 @@ echo setting R2D2-Root drive to: %R2D2_ROOT_DRIVE%
 ::  - Assign the variable R2D2_ROOT_FOLDER to this root folder. E.g. 'D:\User\r2d2-build-test\'
 ::  - Replace backslash '\'characters with forward slash characters '/'
 ::  - Set a environment variable with setx called R2D2_ROOT_DIR with the root folder of R2D2
-echo. && echo.
-CD %~dp0%..\..
-set R2D2_ROOT_FOLDER=%cd%
+echo.
+CD /d %~dp0%..\.. 
+set R2D2_ROOT_FOLDER=!%cd%
 set R2D2_ROOT_FOLDER=!%R2D2_ROOT_FOLDER%
 set R2D2_ROOT_FOLDER=%R2D2_ROOT_FOLDER:\=/%
-setx /M R2D2_ROOT_DIR %R2D2_ROOT_FOLDER% 
-echo setting R2D2-Root folder to: %R2D2_ROOT_FOLDER% 
+rem /M R2D2_ROOT_DIR %R2D2_ROOT_FOLDER% 
+echo setting R2D2-Root folder to: !%R2D2_ROOT_FOLDER% 
 
+echo.
 :: Echo two blank lines and let user know what's up
 :: What this code block does:
 ::  - Change directory to the Windows 10 make application folder
 ::  - Assign the variable MAKE_INSTALL_PATH to this folder. E.g. 'D:\User\r2d2-build-test\programs\make'
-::  - Add MAKE_INSTALL_PATH to the global PATH variable in order to call make from anywhere in the terminal
+::  - cdAdd MAKE_INSTALL_PATH to the global PATH variable in order to call make from anywhere in the terminal
 CD %~dp0%..\..\programs\make
-set MAKE_INSTALL_PATH=%cd%
-echo.
-setx /M path "%path%;%MAKE_INSTALL_PATH%
+set MAKE_INSTALL_PATH=!%cd%
+rem /M path "%path%;%MAKE_INSTALL_PATH%
 echo setting windows path variable for make to: %MAKE_INSTALL_PATH%
 
 
 endlocal
-
+echo. && echo.
 echo done
+echo.
 echo log out and back in to apply the changes!
 echo.
 echo.
