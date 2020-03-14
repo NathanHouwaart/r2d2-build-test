@@ -13,11 +13,15 @@
 @echo off
 cls
 
+
+
 :: enabledelayedexpansion is needed in order to use variables that can change at runtime
 :: Without this, variales can not be variable assigned. More information can be found here: https://ss64.com/nt/delayedexpansion.html
 :: Variables with delayed expansion are indicated with '!'. Like -> !%R2D2_ROOT_FOLDER%
 setlocal enabledelayedexpansion
 setlocal enableextensions
+
+IF /I "%1" EQU "Y" GOTO EXEC
 
 :: Basic echo information to let the user know what this script does.
 echo 		    --- R2D2-install script ---
@@ -44,6 +48,7 @@ IF /I "%AREYOUSURE%" NEQ "Y" GOTO END
 ::  - Assign the variable R2D2_ROOT_DRIVE to this root drive. E.g. 'C:/'
 ::  - Ignore the backslash '\'character
 ::  - Set a environment variable with setx called R2D2_ROOT_DRIVE with the root drive of R2D2
+:EXEC
 echo. && echo.
 set R2D2_ROOT_DRIVE=%~d0%
 setx /M R2D2_ROOT_DRIVE %R2D2_ROOT_DRIVE%
@@ -88,3 +93,5 @@ pause
 
 :END
 exit
+
+:RETURN
