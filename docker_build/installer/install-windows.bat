@@ -84,6 +84,9 @@ endlocal
 echo. && echo.
 echo done
 echo.
+
+IF /I "%1" EQU "Y" GOTO RETURN
+
 echo log out and back in to apply the changes!
 echo.
 echo.
