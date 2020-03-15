@@ -30,7 +30,7 @@ echo && echo
 # statement the users input is checked.
 # 
 # If the users input is equal to Y or y execute the code.
-read -p "Are you sure you wish yo continue? (Y/[N]): " -n 1 -r
+read -p "Are you sure you wish you continue? (Y/[N]): " -n 1 -r
 echo 
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -44,8 +44,9 @@ then
     # In Linux, global environmental variables can be saved in the file /etc/environment
     # Both the R2D2_ROOT_DIR and the R2D2_ROOT_DRIVE ( which is empty on unix systems ) 
     # are appended to the /etc/environment file.
-    echo R2D2_ROOT_DIR=\"$R2D2_ROOT_DIR\" >> /etc/environment
-    echo R2D2_ROOT_DRIVE=\"\" >> /etc/environment
+    echo export R2D2_ROOT_DIR=\"$R2D2_ROOT_DIR\" >> ~/.bashrc
+    echo export R2D2_ROOT_DRIVE=\"\" >> ~/.bashrc
+    echo export R2D2_ROOT_DRIVE_VM=\"\" >> ~/.bashrc
 
     echo 
     echo 

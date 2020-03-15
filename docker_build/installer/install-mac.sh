@@ -31,7 +31,7 @@ echo && echo
 # statement the users input is checked.
 # 
 # If the users input is equal to Y or y execute the code.
-read -p "Are you sure you wish yo continue? (Y/[N]): " -n 1 -r
+read -p "Are you sure you wish you continue? (Y/[N]): " -n 1 -r
 echo 
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -47,6 +47,7 @@ then
     # are appended to the .bash_profile file.
     echo export R2D2_ROOT_DIR=\"$R2D2_ROOT_DIR\" >> ~/.bash_profile
     echo export R2D2_ROOT_DRIVE=\"\" >> ~/.bash_profile
+    echo export R2D2_ROOT_DRIVE_VM=\"\" >> ~/.bash_profile
 
     echo 
     echo 
