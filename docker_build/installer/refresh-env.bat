@@ -7,6 +7,8 @@
 ::
 :: With this batch file, there should be no need to reload command
 :: environment every time you want environment changes to propagate
+:: 
+:: Source CHOCOLATEY
 
 echo | set /p dummy="Reading environment variables from registry. Please wait... "
 
