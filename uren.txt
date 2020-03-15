@@ -9,4 +9,8 @@ datum 12-03-20
 
 
 datum 13-03-20 
-11:20 -     	-- werken aan uitleggen van docker structuur
+11:20 - 12:06   -- weken aan docker native en catch werkend krijgen 
+12:06 - 13:09   -- werken aan uitleggen van docker structuur
+13:15 - 13:40   -- Met duur werken aan script en lead overleg in slack
+13:40 - 14:10   -- Main makefile docker documenteren
+14:10 - 14:20   -- Bellen met duur over script automatisch toevoegen van niewue modules
