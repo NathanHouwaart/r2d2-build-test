@@ -70,7 +70,7 @@ run: $(DEPENDENCIES)
 
 build:
 	@echo $(DEPENDENCIES)
-	$(SUDO) docker run --rm -it -v $(R2D2_ROOT_DRIVE)$(R2D2_ROOT_DIR):/usr/src/myapp -w /usr/src/myapp/$(MODULE_MAKEFILE_DIR)/$(MODULE_NAME)/$(TARGET_MAKEFILE_DIR) $(DOCKER_IMAGE) make --makefile=Makefile.docker build TARGET_DIRECTORY=$(TARGET_DIRECTORY) CONSOLE_BAUDRATE=$(CONSOLE_BAUDRATE) SERIAL_PORT=$(SERIAL_PORT) PLATFORM=$(PLATFORM)
+	$(SUDO) docker run --rm -it -v "$(R2D2_ROOT_DRIVE_VM)/$(R2D2_ROOT_DIR):/usr/src/myapp" -w /usr/src/myapp/$(MODULE_MAKEFILE_DIR)/$(MODULE_NAME)/$(TARGET_MAKEFILE_DIR) $(DOCKER_IMAGE) make --makefile=Makefile.docker build TARGET_DIRECTORY=$(TARGET_DIRECTORY) CONSOLE_BAUDRATE=$(CONSOLE_BAUDRATE) SERIAL_PORT=$(SERIAL_PORT) PLATFORM=$(PLATFORM)
 
 upload:
 	$(SUDO) $(BOOTMODE)
@@ -81,10 +81,10 @@ terminal:
 	$(SUDO) $(TERMINAL) -termonly $(SERIAL_PORT) $(CONSOLE_BAUDRATE) 84000
 
 execute:
-	$(SUDO) docker run --rm -it -v $(R2D2_ROOT_DRIVE)$(R2D2_ROOT_DIR):/usr/src/myapp -w /usr/src/myapp/$(MODULE_MAKEFILE_DIR)/$(MODULE_NAME)/$(TARGET_MAKEFILE_DIR) $(DOCKER_IMAGE) ./main.exe
+	$(SUDO) docker run --rm -it -v "$(R2D2_ROOT_DRIVE_VM)/$(R2D2_ROOT_DIR):/usr/src/myapp" -w /usr/src/myapp/$(MODULE_MAKEFILE_DIR)/$(MODULE_NAME)/$(TARGET_MAKEFILE_DIR) $(DOCKER_IMAGE) ./main.exe
 
 clean:
-	$(SUDO) docker run --rm -it -v $(R2D2_ROOT_DRIVE)$(R2D2_ROOT_DIR):/usr/src/myapp -w /usr/src/myapp/$(MODULE_MAKEFILE_DIR)/$(MODULE_NAME)/$(TARGET_MAKEFILE_DIR) $(DOCKER_IMAGE) make --makefile=Makefile.docker clean TARGET_DIRECTORY=$(TARGET_DIRECTORY) CONSOLE_BAUDRATE=$(CONSOLE_BAUDRATE) SERIAL_PORT=$(SERIAL_PORT) PLATFORM=$(PLATFORM)
+	$(SUDO) docker run --rm -it -v "$(R2D2_ROOT_DRIVE_VM)/$(R2D2_ROOT_DIR):/usr/src/myapp" -w /usr/src/myapp/$(MODULE_MAKEFILE_DIR)/$(MODULE_NAME)/$(TARGET_MAKEFILE_DIR) $(DOCKER_IMAGE) make --makefile=Makefile.docker clean TARGET_DIRECTORY=$(TARGET_DIRECTORY) CONSOLE_BAUDRATE=$(CONSOLE_BAUDRATE) SERIAL_PORT=$(SERIAL_PORT) PLATFORM=$(PLATFORM)
 
 clean_container:
 	docker rm $(shell docker ps -a -q)

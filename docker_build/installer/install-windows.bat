@@ -50,9 +50,26 @@ IF /I "%AREYOUSURE%" NEQ "Y" GOTO END
 ::  - Set a environment variable with setx called R2D2_ROOT_DRIVE with the root drive of R2D2
 :EXEC
 echo. && echo.
-set R2D2_ROOT_DRIVE=%~d0%
+
+for /f "tokens=1,2* delims=: " %%i in (
+  'systeminfo ^|  findstr /B /C:"OS Name" /C:"OS Version"'
+) do set "%%i_%%j=%%k"
+
+if "%OS_Name%"=="Microsoft Windows 10 Home" (
+    set R2D2_ROOT_DRIVE_VM=/c
+    set R2D2_ROOT_DRIVE=%~d0%
+) else (
+    set R2D2_ROOT_DRIVE_VM=%~d0%
+    set R2D2_ROOT_DRIVE=%~d0%
+)
+
+
 setx /M R2D2_ROOT_DRIVE %R2D2_ROOT_DRIVE%
+setx /M R2D2_ROOT_DRIVE_VM "%R2D2_ROOT_DRIVE_VM%"
+
 echo setting R2D2-Root drive to: %R2D2_ROOT_DRIVE%
+echo setting R2D2-Root-VM drive to: %R2D2_ROOT_DRIVE_VM%
+
 
 :: Echo two blank lines and let user know what's up
 :: What this code block does:
@@ -65,7 +82,7 @@ CD /d %~dp0%..\..
 set R2D2_ROOT_FOLDER=!%cd%
 set R2D2_ROOT_FOLDER=!%R2D2_ROOT_FOLDER%
 set R2D2_ROOT_FOLDER=%R2D2_ROOT_FOLDER:\=/%
-setx /M R2D2_ROOT_DIR "%R2D2_ROOT_FOLDER%"
+setx /M R2D2_ROOT_DIR "%R2D2_ROOT_FOLDER%" 
 echo setting R2D2-Root folder to: !%R2D2_ROOT_FOLDER% 
 
 echo.
