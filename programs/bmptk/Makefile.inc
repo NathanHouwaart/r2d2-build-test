@@ -1007,14 +1007,14 @@ INCLUDES  += $(foreach x, $(SEARCH), -I$(x))
 # 
 #============================================================================
 
-CC          := "/usr/local/$(PREFIX)gcc"
-CPP       := "/usr/local/$(PREFIX)g++"
-AS          := "/usr/local/$(PREFIX)gcc"
-OBJCOPY     := "/usr/local/$(PREFIX)objcopy"
-OBJDUMP     := "/usr/local/$(PREFIX)objdump"
-SIZES       := "/usr/local/$(PREFIX)size"
-NM          := "/usr/local/$(PREFIX)nm"
-FILT        := "/usr/local/$(PREFIX)c++filt"
+CC          := "$(PREFIX)gcc"
+CPP       := "$(PREFIX)g++"
+AS          := "$(PREFIX)gcc"
+OBJCOPY     := "$(PREFIX)objcopy"
+OBJDUMP     := "$(PREFIX)objdump"
+SIZES       := "$(PREFIX)size"
+NM          := "$(PREFIX)nm"
+FILT        := "$(PREFIX)c++filt"
 
 ifeq ($(LANGUAGE),C)
    LINKER    := "$(PREFIX)gcc"
