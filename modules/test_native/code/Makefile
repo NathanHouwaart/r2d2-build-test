@@ -8,4 +8,4 @@ PLATFORM			= native
 CONSOLE_BAUDRATE	= 115200
 
 export 
-include $(R2D2_ROOT_DIR)/modules/Makefile.module
+include $(R2D2_ROOT_DRIVE)$(R2D2_ROOT_DIR)/modules/Makefile.module

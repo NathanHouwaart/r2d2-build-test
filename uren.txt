@@ -1,4 +1,3 @@
-
 datum 12-03-20 
 
 19:55 - 20:15   -- verbeterd linux install script en mac install script
@@ -14,3 +13,12 @@ datum 13-03-20
 13:15 - 13:40   -- Met duur werken aan script en lead overleg in slack
 13:40 - 14:10   -- Main makefile docker documenteren
 14:10 - 14:20   -- Bellen met duur over script automatisch toevoegen van niewue modules
+14:20 - 17:20   -- Bellen met Daan om docker op windows 10 home werkend te krijgen
+
+datum 14-03-20  
+12:00 - 13:30   -- bezig geweest met een automatisch .bat script maken voor het installeren van r2d2 op windows 10
+16:00 - 18:00   -- bezig geweest met een .exe maken voor het automatisch installeren van r2d2 op windows 10
+22:00 - 23:45   -- script testen en verbeteren
+
+datum 15-03-20
+9:00  - 23:10   -- Bezig met het mergen van de windows 10 home branch. Ook bezig met het testen ervan.
